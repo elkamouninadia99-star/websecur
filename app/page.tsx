@@ -10,5 +10,5 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  return <main><Navbar /><Hero /><Features /><Services /><Process /><WhyChooseUs /><About /><Testimonials /><Contact /><Footer /></main>;
+  return <><a className="skip-link" href="#main-content">Skip to content</a><Navbar /><main id="main-content"><Hero /><Features /><Services /><Process /><WhyChooseUs /><About /><Testimonials /><Contact /></main><Footer /></>;
 }
