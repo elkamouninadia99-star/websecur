@@ -1,91 +1,211 @@
-import Image from "next/image";
+"use client";
+
 import { motion } from "framer-motion";
-import { Activity, Cloud, LockKeyhole, ShieldCheck } from "lucide-react";
+import {
+  ShieldCheck,
+  Globe,
+  LockKeyhole,
+  Zap,
+} from "lucide-react";
 
 const cards = [
   {
+    title: "SSL Certificate",
+    subtitle: "256-bit Encryption",
+    icon: ShieldCheck,
+    position: "top-3 left-2",
+    delay: 0,
+  },
+  {
+    title: "Secure Hosting",
+    subtitle: "Cloud Ready",
+    icon: Globe,
+    position: "top-14 right-2",
+    delay: 0.2,
+  },
+  {
+    title: "Website Security",
+    subtitle: "Protected",
     icon: LockKeyhole,
-    title: "SSL Secured",
-    meta: "Encrypted traffic",
-    className: "-left-2 top-14 sm:left-0 lg:-left-6",
+    position: "bottom-14 left-2",
+    delay: 0.4,
   },
   {
-    icon: Activity,
-    title: "Live Monitor",
-    meta: "Monitored hosting",
-    className: "bottom-12 -right-2 sm:right-0 lg:-right-3",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud Ready",
-    meta: "Fast deployment",
-    className: "right-8 top-6 hidden sm:flex lg:right-3",
+    title: "Fast Performance",
+    subtitle: "Optimized",
+    icon: Zap,
+    position: "bottom-3 right-2",
+    delay: 0.6,
   },
 ];
 
 export default function HeroImage() {
   return (
-    <motion.div
-      initial={{ opacity: 1, scale: 1 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.65, ease: "easeOut" }}
-      className="relative mx-auto flex w-full max-w-[280px] items-center justify-center sm:max-w-[380px] md:max-w-[430px] lg:max-w-[455px] xl:max-w-[500px]"
-    >
-      <div className="absolute inset-0 rounded-full bg-cyan-400/10 blur-[110px]" />
+    <div className="relative mx-auto flex h-[430px] w-full max-w-[470px] items-center justify-center lg:h-[470px] lg:max-w-[500px]">
+
+      {/* Premium Background Glow */}
+
       <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="relative aspect-square w-full"
-      >
-        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.20),transparent_58%)] blur-[44px]" />
-        <div className="absolute inset-5 rounded-full border border-cyan-300/15" />
-        <div className="absolute inset-12 rounded-full border border-white/10" />
-        <div className="absolute left-1/2 top-1/2 h-[72%] w-[72%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.035] shadow-[inset_0_0_70px_rgba(255,255,255,0.04)] backdrop-blur-sm" />
+        animate={{
+          scale: [1, 1.05, 1],
+          opacity: [0.22, 0.35, 0.22],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute inset-0 -z-20 rounded-full blur-[70px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(34,211,238,.18), transparent 70%)",
+        }}
+      />
 
-        <Image
-          src="/Image/cyber-shield.png"
-          alt="Cyber shield protecting a secure website"
-          fill
-          priority
-          sizes="(min-width: 1280px) 500px, (min-width: 1024px) 455px, (min-width: 640px) 380px, 280px"
-          className="object-contain drop-shadow-[0_0_70px_rgba(34,211,238,0.28)]"
-        />
+      {/* Main Glow */}
 
-        {cards.map((card, index) => {
-          const Icon = card.icon;
+      <motion.div
+        animate={{
+          scale: [1, 1.06, 1],
+          opacity: [0.14, 0.24, 0.14],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute h-[340px] w-[340px] rounded-full bg-cyan-500/10 blur-[110px] lg:h-[380px] lg:w-[380px]"
+      />
 
-          return (
-            <motion.div
-              key={card.title}
-              animate={{ y: [0, index % 2 === 0 ? -6 : 6, 0] }}
-              transition={{
-                duration: 5 + index,
+      {/* Secondary Glow */}
+
+      <motion.div
+        animate={{
+          scale: [1.04, 0.96, 1.04],
+          opacity: [0.10, 0.18, 0.10],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute h-[250px] w-[250px] rounded-full bg-blue-500/10 blur-[90px] lg:h-[300px] lg:w-[300px]"
+      />
+
+      {/* Outer Ring */}
+
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 45,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="absolute h-[330px] w-[330px] rounded-full border border-cyan-400/10 lg:h-[370px] lg:w-[370px]"
+      />
+
+      {/* Inner Ring */}
+
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{
+          duration: 60,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="absolute h-[260px] w-[260px] rounded-full border border-blue-400/10 lg:h-[290px] lg:w-[290px]"
+      />
+
+      {/* Floating Cards + Shield */}
+            {/* Floating Cards */}
+
+      {cards.map((card) => {
+        const Icon = card.icon;
+
+        return (
+          <motion.div
+            key={card.title}
+            initial={{
+              opacity: 0,
+              scale: 0.9,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, -6, 0],
+            }}
+            transition={{
+              opacity: {
+                duration: 0.6,
+                delay: card.delay,
+              },
+              scale: {
+                duration: 0.6,
+                delay: card.delay,
+              },
+              y: {
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: index * 0.3,
-              }}
-              className={`absolute ${card.className} flex items-center gap-3 rounded-lg border border-white/10 bg-[#07111f]/80 px-3 py-2.5 shadow-[0_18px_55px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-4 sm:py-3`}
-            >
-              <span className="grid h-9 w-9 place-items-center rounded-lg border border-cyan-300/20 bg-cyan-300/10 text-cyan-300 sm:h-10 sm:w-10">
-                <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-              </span>
-              <span>
-                <span className="block text-xs font-bold text-white sm:text-sm">
-                  {card.title}
-                </span>
-                <span className="block text-[11px] font-medium text-zinc-400 sm:text-xs">
-                  {card.meta}
-                </span>
-              </span>
-            </motion.div>
-          );
-        })}
+                delay: card.delay,
+              },
+            }}
+            whileHover={{
+              scale: 1.04,
+              y: -5,
+            }}
+            className={`absolute z-30 ${card.position}`}
+          >
+            <div className="flex items-center gap-3 rounded-2xl border border-cyan-400/20 bg-white/[0.05] px-3 py-2 backdrop-blur-xl shadow-[0_18px_40px_rgba(0,0,0,.30)] transition-all duration-300 hover:border-cyan-300/40 hover:bg-white/[0.08]">
 
-        <div className="absolute bottom-4 left-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-2 text-xs font-bold text-cyan-200 backdrop-blur-xl">
-          <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-          Trusted
-        </div>
-      </motion.div>
-    </motion.div>
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/15">
+                <Icon className="h-4 w-4 text-cyan-300" />
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-white">
+                  {card.title}
+                </h3>
+
+                <p className="text-[11px] text-zinc-400">
+                  {card.subtitle}
+                </p>
+              </div>
+
+            </div>
+          </motion.div>
+        );
+      })}
+
+      {/* Main Shield */}
+
+      <motion.img
+        src="/Image/cyber-shield.png"
+        alt="WebSecur Shield"
+        draggable={false}
+        animate={{
+          y: [0, -8, 0],
+          scale: [1, 1.02, 1],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          relative
+          z-20
+          h-[250px]
+          w-[250px]
+          select-none
+          object-contain
+          drop-shadow-[0_0_35px_rgba(34,211,238,.22)]
+          lg:h-[300px]
+          lg:w-[300px]
+        "
+      />
+
+    </div>
   );
 }

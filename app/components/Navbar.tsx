@@ -2,32 +2,42 @@
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-cyan-500/20">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-
-        <h1 className="text-3xl font-bold text-cyan-400">
+    <header className="fixed inset-x-0 top-0 z-50">
+      <nav className="mx-auto mt-4 flex h-16 max-w-7xl items-center justify-between rounded-2xl border border-cyan-500/20 bg-slate-950/70 px-6 backdrop-blur-xl">
+        <h1 className="text-2xl font-bold tracking-tight text-cyan-400">
           WebSecur
         </h1>
 
-        <div className="hidden md:flex gap-8 text-gray-300">
-          <a href="#home" className="hover:text-cyan-400 transition">
+        <div className="hidden items-center gap-8 md:flex">
+          <a
+            href="#home"
+            className="text-zinc-300 transition hover:text-cyan-400"
+          >
             Home
           </a>
 
-          <a href="#services" className="hover:text-cyan-400 transition">
+          <a
+            href="#services"
+            className="text-zinc-300 transition hover:text-cyan-400"
+          >
             Services
           </a>
 
-          <a href="#about" className="hover:text-cyan-400 transition">
+          <a
+            href="#about"
+            className="text-zinc-300 transition hover:text-cyan-400"
+          >
             About
           </a>
 
-          <a href="#contact" className="hover:text-cyan-400 transition">
+          <a
+            href="#contact"
+            className="text-zinc-300 transition hover:text-cyan-400"
+          >
             Contact
           </a>
         </div>
-
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
