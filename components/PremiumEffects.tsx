@@ -21,5 +21,5 @@ export default function PremiumEffects() {
     };
   }, []);
 
-  return <><div ref={glowRef} className="cursor-glow" aria-hidden="true" />{visible && <div className="site-loader" aria-label="Loading WebSecur"><div className="site-loader-mark"><Shield className="size-5" /></div><span>Web<span>Secur</span></span></div>}</>;
+  return <><div ref={glowRef} className="cursor-glow" aria-hidden="true" />{visible && <div className="site-loader" aria-label="Loading ProGuard Web"><div className="site-loader-mark"><Shield className="size-5" /></div><span>ProGuard <span>Web</span></span></div>}</>;
 }

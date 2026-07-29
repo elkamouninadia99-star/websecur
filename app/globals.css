@@ -20,12 +20,12 @@ section[id] { scroll-margin-top: 5.5rem; }
 .dashboard-progress { transform-origin: left; animation: progress-in .8s cubic-bezier(.2,.8,.2,1) both; }
 .protected-status { animation: status-pulse 2.4s ease-in-out infinite; }
 .form-success { animation: success-in 300ms cubic-bezier(.2,.8,.2,1) both; }.success-check { animation: check-pop 350ms cubic-bezier(.2,.8,.2,1) both; }
-.section { position: relative; overflow: hidden; padding: 5.5rem 1.5rem; }
+.section { position: relative; overflow: hidden; padding: 4.75rem 1.5rem; }
 .container { position: relative; margin: 0 auto; width: 100%; max-width: 72rem; }
 .eyebrow { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid rgba(103,232,249,.2); border-radius: 9999px; background: rgba(6,182,212,.08); padding: .42rem .75rem; color: #a5f3fc; font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .section-title { margin-top: 1rem; max-width: 42rem; font-size: clamp(2rem, 4vw, 3.15rem); font-weight: 750; letter-spacing: -.045em; line-height: 1.05; }
 .section-copy { margin-top: 1rem; max-width: 38rem; color: #94a3b8; font-size: 1rem; line-height: 1.7; }
-@media (min-width: 768px) { .section { padding: 6.5rem 2rem; } }
+@media (min-width: 768px) { .section { padding: 5.5rem 2rem; } }
 @keyframes loader-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes loader-out { to { opacity: 0; visibility: hidden; } }
 @keyframes progress-in { from { transform: scaleX(.05); } to { transform: scaleX(1); } }

@@ -5,11 +5,10 @@ import Services from "@/components/services/Services";
 import Process from "@/components/Process";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import PremiumEffects from "@/components/PremiumEffects";
 
 export default function Home() {
-  return <><PremiumEffects /><a className="skip-link" href="#main-content">Skip to content</a><Navbar /><main id="main-content"><Hero /><Features /><Services /><Process /><WhyChooseUs /><About /><Testimonials /><Contact /></main><Footer /></>;
+  return <><PremiumEffects /><a className="skip-link" href="#main-content">Skip to content</a><Navbar /><main id="main-content"><Hero /><Features /><Services /><Process /><WhyChooseUs /><About /><Contact /></main><Footer /></>;
 }
