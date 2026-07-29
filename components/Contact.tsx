@@ -1,9 +1,9 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { CheckCircle2, Mail, MapPin, Phone, Send } from "lucide-react";
+import { CheckCircle2, Mail, Phone, Send } from "lucide-react";
 
 const initial = { name: "", email: "", subject: "", message: "" };
-const details = [[Mail, "Email", "contact@proguardweb.com"], [Phone, "Phone", "+212 6 XX XX XX XX"], [MapPin, "Location", "Casablanca, Morocco"]] as const;
+const details = [[Mail, "Email", "contact@proguardweb.com"], [Phone, "Phone", "+212 6 XX XX XX XX"]] as const;
 
 export default function Contact() {
   const [form, setForm] = useState(initial);
