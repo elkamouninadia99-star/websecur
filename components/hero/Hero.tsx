@@ -11,11 +11,11 @@ export default function Hero() {
       <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">{proof.map(item => <span key={item} className="inline-flex items-center gap-1.5 text-xs text-slate-300"><CheckCircle2 className="size-3.5 text-cyan-300"/>{item}</span>)}</div>
     </div>
     <div className="relative mx-auto w-full max-w-md">
-      <div className="surface relative overflow-hidden rounded-3xl p-4 sm:p-5">
+      <div className="surface premium-card relative overflow-hidden rounded-3xl p-4 sm:p-5">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent"/>
-        <div className="flex items-center justify-between border-b border-white/10 pb-4"><span className="text-sm font-semibold">WebSecur Control</span><span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/10 px-2 py-1 text-[10px] font-bold text-emerald-300"><span className="size-1.5 rounded-full bg-emerald-300"/> Protected</span></div>
+        <div className="flex items-center justify-between border-b border-white/10 pb-4"><span className="text-sm font-semibold">WebSecur Control</span><span className="protected-status inline-flex items-center gap-1 rounded-full bg-emerald-400/10 px-2 py-1 text-[10px] font-bold text-emerald-300"><span className="size-1.5 rounded-full bg-emerald-300"/> Protected</span></div>
         <div className="mt-5 grid grid-cols-2 gap-3"><div className="rounded-2xl border border-cyan-300/15 bg-cyan-300/[.07] p-4"><ShieldCheck className="size-6 text-cyan-200"/><p className="mt-6 text-xs text-slate-400">Connection</p><p className="mt-1 font-semibold text-white">SSL secured</p></div><div className="rounded-2xl border border-white/10 bg-white/[.035] p-4"><Zap className="size-6 text-blue-300"/><p className="mt-6 text-xs text-slate-400">Performance</p><p className="mt-1 font-semibold text-white">Optimized</p></div></div>
-        <div className="mt-3 rounded-2xl border border-white/10 bg-white/[.035] p-4"><div className="flex items-center justify-between text-xs text-slate-400"><span>Infrastructure health</span><span className="text-cyan-200">99.9% uptime</span></div><div className="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-800"><div className="h-full w-[94%] rounded-full bg-gradient-to-r from-cyan-300 to-blue-400"/></div></div>
+        <div className="mt-3 rounded-2xl border border-white/10 bg-white/[.035] p-4"><div className="flex items-center justify-between text-xs text-slate-400"><span>Infrastructure health</span><span className="text-cyan-200">99.9% uptime</span></div><div className="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-800" role="progressbar" aria-label="Infrastructure health" aria-valuemin={0} aria-valuemax={100} aria-valuenow={94}><div className="dashboard-progress h-full w-[94%] rounded-full bg-gradient-to-r from-cyan-300 to-blue-400"/></div></div>
       </div>
     </div>
     </div>
