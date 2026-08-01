@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = "https://proguardweb.com";
 const siteName = "ProGuard Web";
 const description = "ProGuard Web builds premium websites, secure hosting infrastructure, SSL implementation and cybersecurity solutions for modern businesses.";
+const googleAnalyticsId = "G-R207GL2RWR";
 
 export const viewport: Viewport = {
   colorScheme: "dark",
@@ -102,5 +104,5 @@ const structuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /></body></html>;
+  return <html lang="en"><body>{children}<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />{process.env.NODE_ENV === "production" && <><Script src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} strategy="afterInteractive" /><Script id="google-analytics" strategy="afterInteractive">{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag("js", new Date()); gtag("config", "${googleAnalyticsId}");`}</Script></>}</body></html>;
 }
