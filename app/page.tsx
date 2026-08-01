@@ -10,5 +10,5 @@ import Footer from "@/components/Footer";
 import PremiumEffects from "@/components/PremiumEffects";
 
 export default function Home() {
-  return <><PremiumEffects /><a className="skip-link" href="#main-content">Skip to content</a><Navbar /><main id="main-content"><Hero /><Features /><Services /><Process /><WhyChooseUs /><About /><Contact /></main><Footer /></>;
+  return <><PremiumEffects /><a className="skip-link" href="#main-content">Skip to content</a><Navbar /><main id="main-content" className="relative z-10"><Hero /><Features /><Services /><Process /><WhyChooseUs /><About /><Contact /></main><Footer /></>;
 }

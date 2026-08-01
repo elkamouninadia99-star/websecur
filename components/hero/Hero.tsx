@@ -2,7 +2,7 @@ import { ArrowRight, CheckCircle2, LockKeyhole, ShieldCheck, Zap } from "lucide-
 
 const proof = ["SSL-ready", "Secure hosting", "Continuous support"];
 export default function Hero() {
-  return <section id="home" className="site-grid relative isolate min-h-[650px] overflow-hidden bg-[#07111f] px-6 pb-12 pt-28 sm:px-8 lg:min-h-[680px] lg:pt-28"><div className="absolute left-[12%] top-20 -z-10 size-[26rem] rounded-full bg-cyan-400/10 blur-[120px]"/><div className="absolute right-[6%] top-20 -z-10 size-[30rem] rounded-full bg-blue-500/10 blur-[140px]"/>
+  return <section id="home" className="relative isolate min-h-[650px] overflow-hidden px-6 pb-12 pt-28 sm:px-8 lg:min-h-[680px] lg:pt-28"><div className="absolute left-[12%] top-20 -z-10 size-[26rem] rounded-full bg-cyan-400/10 blur-[120px]"/><div className="absolute right-[6%] top-20 -z-10 size-[30rem] rounded-full bg-blue-500/10 blur-[140px]"/>
     <div className="container grid items-center gap-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-10"><div>
       <div className="eyebrow"><ShieldCheck className="size-3.5"/> Secure digital foundations</div>
       <h1 className="mt-5 max-w-2xl text-balance text-4xl font-bold leading-[1.03] tracking-[-.055em] text-white sm:text-5xl lg:text-[3.5rem]">Websites that move your business forward — <span className="text-cyan-300">securely.</span></h1>
