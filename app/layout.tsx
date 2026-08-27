@@ -4,7 +4,9 @@ import "./globals.css";
 
 const siteUrl = "https://proguardweb.com";
 const siteName = "ProGuard Web";
-const description = "ProGuard Web builds premium websites, secure hosting infrastructure, SSL implementation and cybersecurity solutions for modern businesses.";
+const title = "ProGuard Web | Premium Web Development & Website Security";
+const description = "ProGuard Web builds premium, high-performance websites and provides SSL, security, maintenance, and optimization services for businesses worldwide.";
+const ogImage = `${siteUrl}/og-image.jpg`;
 const googleAnalyticsId = "G-R207GL2RWR";
 
 export const viewport: Viewport = {
@@ -14,43 +16,35 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: "ProGuard Web | Premium Website Development & Cyber Security",
-    template: "%s | ProGuard Web",
-  },
+  title,
   description,
   applicationName: siteName,
-  keywords: ["website development", "SSL certificates", "cybersecurity", "website maintenance", "performance optimization", "secure hosting", "Morocco"],
+  keywords: ["web development", "website security", "SSL installation", "website maintenance", "performance optimization", "high-performance websites", "website optimization", "cybersecurity services"],
   authors: [{ name: siteName, url: siteUrl }],
   creator: siteName,
   publisher: siteName,
   category: "technology",
-  alternates: { canonical: "/" },
+  alternates: { canonical: siteUrl },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
-  icons: {
-    icon: [{ url: "/favicon.ico", type: "image/x-icon" }],
-    shortcut: ["/favicon.ico"],
-    apple: [{ url: "/favicon.ico", type: "image/x-icon" }],
-  },
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "/",
+    url: siteUrl,
     siteName,
-    title: "ProGuard Web | Premium Website Development & Cyber Security",
+    title,
     description,
-    images: [{ url: "/Image/cyber-shield.png", alt: "ProGuard Web cyber security shield" }],
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "ProGuard Web website security and web development" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProGuard Web | Premium Website Development & Cyber Security",
+    title,
     description,
-    images: [{ url: "/Image/cyber-shield.png", alt: "ProGuard Web cyber security shield" }],
+    images: [ogImage],
   },
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: siteName },
   formatDetection: { email: false, address: false, telephone: false },
@@ -58,49 +52,23 @@ export const metadata: Metadata = {
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: siteName,
-      url: siteUrl,
-      logo: `${siteUrl}/Image/cyber-shield.png`,
-      description,
-      email: "contact@proguardweb.com",
-      sameAs: ["https://linkedin.com", "https://github.com"],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      name: siteName,
-      url: siteUrl,
-      publisher: { "@id": `${siteUrl}/#organization` },
-      inLanguage: "en",
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": `${siteUrl}/#service`,
-      name: siteName,
-      url: siteUrl,
-      image: `${siteUrl}/Image/cyber-shield.png`,
-      description,
-      email: "contact@proguardweb.com",
-      telephone: "+212600000000",
-      areaServed: "Worldwide",
-      serviceType: ["Website Development", "SSL Certificates", "Cybersecurity", "Website Maintenance", "Performance Optimization"],
-      parentOrganization: { "@id": `${siteUrl}/#organization` },
-    },
-    {
-      "@type": "WebPage",
-      "@id": `${siteUrl}/#webpage`,
-      url: siteUrl,
-      name: "ProGuard Web | Premium Website Development & Cyber Security",
-      description,
-      isPartOf: { "@id": `${siteUrl}/#website` },
-      about: { "@id": `${siteUrl}/#service` },
-      inLanguage: "en",
-    },
-  ],
+  "@type": "LocalBusiness",
+  "@id": `${siteUrl}/#localbusiness`,
+  name: siteName,
+  url: siteUrl,
+  description,
+  email: "contact@proguardweb.com",
+  telephone: "+212625727351",
+  areaServed: "Worldwide",
+  sameAs: [],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "ProGuard Web services",
+    itemListElement: ["Website Development", "Website Security", "SSL Installation", "Website Maintenance", "Performance Optimization"].map((name) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name },
+    })),
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
