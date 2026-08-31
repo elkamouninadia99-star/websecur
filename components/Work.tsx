@@ -63,6 +63,58 @@ export default function Work() {
             </div>
           </div>
         </article>
+
+        <article className="surface premium-card mt-6 overflow-hidden rounded-3xl p-3 sm:p-5 lg:p-6">
+          <div className="grid gap-7 lg:grid-cols-[.75fr_1.25fr] lg:items-center lg:gap-9">
+            <div className="order-2 px-2 pb-2 sm:px-3 lg:order-1 lg:px-0 lg:pb-0">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-semibold tracking-[0.2em] text-cyan-200">02</span>
+                <span className="h-px w-8 bg-cyan-200/30" aria-hidden="true" />
+                <span className="text-xs font-medium uppercase tracking-[0.16em] text-cyan-200">Live Demo</span>
+              </div>
+              <p className="mt-4 text-sm font-medium text-cyan-200">Website Design · SHK / Home Services</p>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">WärmeWerk SHK</h3>
+              <p className="mt-4 max-w-md text-sm leading-7 text-slate-300 sm:text-base">
+                Premium website concept for a German SHK company specializing in sanitary, heating, heat pumps and climate technology.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {['React', 'TypeScript', 'Vite'].map((tag) => (
+                  <span key={tag} className="rounded-full border border-cyan-200/15 bg-cyan-300/[.06] px-3 py-1.5 text-xs font-medium text-slate-200">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a
+                href="https://waermewerk-shk.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-300 px-5 text-sm font-semibold text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:bg-cyan-200 hover:shadow-[0_12px_28px_rgba(34,211,238,.18)]"
+              >
+                View Live Project <ExternalLink className="size-4" aria-hidden="true" />
+              </a>
+              <div className="mt-7 flex items-center gap-2 text-xs text-slate-500">
+                <ArrowUpRight className="size-3.5 text-cyan-200" aria-hidden="true" /> Portfolio concept · Germany market
+              </div>
+            </div>
+
+            <div className="order-1 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 shadow-[0_20px_45px_rgba(0,0,0,.28)] lg:order-2">
+              <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[.035] px-4 py-3" aria-hidden="true">
+                <span className="size-2 rounded-full bg-rose-300/70" />
+                <span className="size-2 rounded-full bg-amber-200/70" />
+                <span className="size-2 rounded-full bg-emerald-300/70" />
+                <span className="ml-3 h-5 flex-1 rounded-md border border-white/8 bg-slate-950/50" />
+              </div>
+              <Image
+                src="/Image/waermewerk-shk-preview.png"
+                alt="WärmeWerk SHK website homepage preview"
+                width={1896}
+                height={905}
+                sizes="(min-width: 1024px) 720px, (min-width: 640px) 640px, 100vw"
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   );
