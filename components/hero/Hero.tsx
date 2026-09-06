@@ -1,23 +1,123 @@
-import { ArrowRight, CheckCircle2, LockKeyhole, ShieldCheck, Zap } from "lucide-react";
+"use client";
+
+import Image from "next/image";
+import { ArrowDown, ArrowRight, CheckCircle2, LockKeyhole } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform, useScroll, useInView } from "framer-motion";
+import { useEffect, useRef, type PointerEvent } from "react";
+
+import HeroMetrics from "./HeroMetrics";
 
 const proof = ["SSL-ready", "Secure hosting", "Continuous support"];
+const capabilities = ["Design", "Development", "Security"];
+
 export default function Hero() {
-  return <section id="home" className="relative isolate min-h-[650px] overflow-hidden px-6 pb-12 pt-28 sm:px-8 lg:min-h-[680px] lg:pt-28"><div className="absolute left-[12%] top-20 -z-10 size-[26rem] rounded-full bg-cyan-400/10 blur-[120px]"/><div className="absolute right-[6%] top-20 -z-10 size-[30rem] rounded-full bg-blue-500/10 blur-[140px]"/>
-    <div className="container grid items-center gap-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-10"><div>
-      <div className="eyebrow"><ShieldCheck className="size-3.5"/> Secure digital foundations</div>
-      <h1 className="mt-5 max-w-2xl text-balance text-4xl font-bold leading-[1.03] tracking-[-.055em] text-white sm:text-5xl lg:text-[3.5rem]">Websites that move your business forward — <span className="text-cyan-300">securely.</span></h1>
-      <p className="mt-5 max-w-xl text-pretty text-base leading-7 text-slate-300 sm:text-lg">ProGuard Web designs high-performing websites, protects every connection, and keeps your online infrastructure dependable.</p>
-      <div className="mt-7 flex flex-col gap-3 sm:flex-row"><a href="#contact" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-cyan-300 px-5 text-sm font-semibold text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:bg-cyan-200 hover:shadow-[0_12px_28px_rgba(34,211,238,.18)]">Start a secure project <ArrowRight className="size-4"/></a><a href="#services" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/5 px-5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/25 hover:bg-white/10">Explore services <LockKeyhole className="size-4"/></a></div>
-      <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">{proof.map(item => <span key={item} className="inline-flex items-center gap-1.5 text-xs text-slate-300"><CheckCircle2 className="size-3.5 text-cyan-300"/>{item}</span>)}</div>
-    </div>
-    <div className="relative mx-auto w-full max-w-md">
-      <div className="surface premium-card relative overflow-hidden rounded-3xl p-4 sm:p-5">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent"/>
-        <div className="flex items-center justify-between border-b border-white/10 pb-4"><span className="text-sm font-semibold">ProGuard Web Control</span><span className="protected-status inline-flex items-center gap-1 rounded-full bg-emerald-400/10 px-2 py-1 text-[10px] font-bold text-emerald-300"><span className="size-1.5 rounded-full bg-emerald-300"/> Protected</span></div>
-        <div className="mt-5 grid grid-cols-2 gap-3"><div className="rounded-2xl border border-cyan-300/15 bg-cyan-300/[.07] p-4"><ShieldCheck className="size-6 text-cyan-200"/><p className="mt-6 text-xs text-slate-400">Connection</p><p className="mt-1 font-semibold text-white">SSL secured</p></div><div className="rounded-2xl border border-white/10 bg-white/[.035] p-4"><Zap className="size-6 text-blue-300"/><p className="mt-6 text-xs text-slate-400">Performance</p><p className="mt-1 font-semibold text-white">Optimized</p></div></div>
-        <div className="mt-3 rounded-2xl border border-white/10 bg-white/[.035] p-4"><div className="flex items-center justify-between text-xs text-slate-400"><span>Infrastructure health</span><span className="text-cyan-200">99.9% uptime</span></div><div className="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-800" role="progressbar" aria-label="Infrastructure health" aria-valuemin={0} aria-valuemax={100} aria-valuenow={94}><div className="dashboard-progress h-full w-[94%] rounded-full bg-gradient-to-r from-cyan-300 to-blue-400"/></div></div>
+  const showcaseRef = useRef<HTMLElement>(null);
+  const showcaseVisible = useInView(showcaseRef, { once: true, amount: .15 });
+  const heroRef = useRef<HTMLElement>(null);
+  const scrollEnabled = useMotionValue(0);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const headlineY = useTransform(() => scrollYProgress.get() * scrollEnabled.get() * -20);
+  const headlineOpacity = useTransform(() => 1 - scrollYProgress.get() * scrollEnabled.get() * .15);
+  const showcaseY = useTransform(() => scrollYProgress.get() * scrollEnabled.get() * 15);
+  const showcaseScale = useTransform(() => 1 - scrollYProgress.get() * scrollEnabled.get() * .02);
+  const pointerEnabled = useRef(false);
+  const bounds = useRef<DOMRect | null>(null);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const x = useSpring(pointerX, { stiffness: 90, damping: 25, mass: .6 });
+  const y = useSpring(pointerY, { stiffness: 90, damping: 25, mass: .6 });
+  const cardX = useTransform(x, value => value * 2.25);
+  const cardY = useTransform(y, value => value * 1.8);
+  const rearX = useTransform(x, value => value * 1.75);
+  const rearY = useTransform(y, value => value * 1.75);
+  const lightX = useTransform(x, value => value * 3);
+  const lightY = useTransform(y, value => value * 2.5);
+
+  useEffect(() => {
+    const media = matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    const sync = () => {
+      pointerEnabled.current = media.matches;
+      scrollEnabled.set(media.matches ? 1 : 0);
+      bounds.current = null;
+      pointerX.set(0); pointerY.set(0);
+      if (!media.matches) { x.jump(0); y.jump(0); }
+    };
+    const invalidate = () => { bounds.current = null; };
+    sync();
+    media.addEventListener("change", sync);
+    window.addEventListener("resize", invalidate, { passive: true });
+    window.addEventListener("scroll", invalidate, { passive: true });
+    return () => {
+      media.removeEventListener("change", sync);
+      window.removeEventListener("resize", invalidate);
+      window.removeEventListener("scroll", invalidate);
+    };
+  }, [pointerX, pointerY, x, y, scrollEnabled]);
+
+  function movePointer(event: PointerEvent<HTMLElement>) {
+    if (!pointerEnabled.current) return;
+    bounds.current ??= event.currentTarget.getBoundingClientRect();
+    const rect = bounds.current;
+    pointerX.set(Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1)) * 4);
+    pointerY.set(Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1)) * 5);
+  }
+
+  return (
+    <section ref={heroRef} id="home" className="agency-hero" onPointerMove={movePointer} onPointerLeave={() => { pointerX.set(0); pointerY.set(0); bounds.current = null; }}>
+      <motion.div className="hero-light" style={{ x: lightX, y: lightY }} aria-hidden="true" />
+      <div className="container hero-composition">
+        <div className="hero-copy">
+          <div className="hero-eyebrow"><span className="status-dot" />Secure digital foundations</div>
+          <motion.h1 className="hero-headline" style={{ y: headlineY, opacity: headlineOpacity }}>
+            <span className="hero-line"><span>Websites that move</span></span>{" "}
+            <span className="hero-line"><span>your business</span></span>{" "}
+            <span className="hero-line"><span>forward &mdash; <em>securely.</em></span></span>
+          </motion.h1>
+          <p className="hero-description">ProGuard Web designs high-performing websites, protects every connection, and keeps your online infrastructure dependable.</p>
+          <div className="hero-actions">
+            <a href="#contact" className="hero-button hero-button-primary">Start a secure project <ArrowRight aria-hidden="true" /></a>
+            <a href="#services" className="hero-button hero-button-secondary">Explore services <ArrowRight aria-hidden="true" /></a>
+          </div>
+          <ul className="hero-proof" aria-label="Our commitments">
+            {proof.map(item => <li key={item}><CheckCircle2 aria-hidden="true" />{item}</li>)}
+          </ul>
+          <ul className="hero-capabilities" aria-label="Our capabilities">
+            {capabilities.map(item => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+
+        <motion.figure ref={showcaseRef} data-visible={showcaseVisible} style={{ y: showcaseY, scale: showcaseScale }} className="hero-showcase" aria-label="Website design by ProGuard Web">
+          <div className="hero-technical-ring" aria-hidden="true" />
+          <motion.div className="hero-rear-depth" style={{ x: rearX, y: rearY }} aria-hidden="true">
+            <div className="hero-rear-entrance"><div className="hero-rear-browser">
+              <div className="hero-rear-toolbar"><span/><span/><span/><i/></div>
+              <Image src="/Image/everpeak-roofing-preview.png" alt="" width={1901} height={900} sizes="(min-width: 1440px) 670px, (min-width: 1024px) 50vw, 700px" />
+            </div></div>
+          </motion.div>
+          <div className="hero-code-layer" aria-hidden="true"><span>Built with intention</span><code>&lt;main&gt; design. develop. protect. &lt;/main&gt;</code><i/></div>
+          <motion.div className="hero-browser-depth" style={{ x, y }}>
+            <div className="hero-browser-entrance">
+              <div className="hero-browser">
+                <div className="hero-browser-toolbar" aria-hidden="true">
+                  <span className="hero-window-controls"><i /><i /><i /></span>
+                  <span className="hero-browser-url"><LockKeyhole />everpeak-roofing.vercel.app</span>
+                  <span className="hero-browser-menu"><i /><i /></span>
+                </div>
+                <a href="#work" className="hero-browser-link" aria-label="Explore EverPeak Roofing in our selected work">
+                  <Image src="/Image/everpeak-roofing-preview.png" alt="EverPeak Roofing website designed by ProGuard Web, featuring a full-width photograph, clear navigation and prominent calls to action" width={1901} height={900} sizes="(min-width: 1440px) 670px, (min-width: 1024px) 50vw, (min-width: 768px) 700px, 100vw" preload />
+                  <span className="hero-preview-link">Explore the project <ArrowRight aria-hidden="true" /></span>
+                </a>
+                <div className="hero-browser-footer"><span><span className="status-dot" />EverPeak Roofing</span><span>Web design &amp; development</span></div>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div className="hero-signal-layer" style={{ x: cardX, y: cardY }}>
+            <HeroMetrics />
+          </motion.div>
+          <p className="sr-only">Illustrative quality targets, not measured results.</p>
+        </motion.figure>
       </div>
-    </div>
-    </div>
-  </section>;
+      <div className="container hero-bottom"><span>Premium websites. Secure digital foundations.</span><a href="#features">Discover the ProGuard standard <ArrowDown aria-hidden="true" /></a></div>
+    </section>
+  );
 }

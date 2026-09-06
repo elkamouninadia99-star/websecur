@@ -17,32 +17,32 @@ export default function Work() {
           </p>
         </div>
 
-        <article className="surface premium-card mt-9 overflow-hidden rounded-3xl p-3 sm:p-5 lg:p-6">
+        <article className="surface project-story mt-9 overflow-hidden rounded-3xl p-3 sm:p-5 lg:p-6">
           <div className="grid gap-7 lg:grid-cols-[1.25fr_.75fr] lg:items-center lg:gap-9">
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 shadow-[0_20px_45px_rgba(0,0,0,.28)]">
+            <div className="project-preview overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 shadow-[0_20px_45px_rgba(0,0,0,.28)]">
               <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[.035] px-4 py-3" aria-hidden="true">
                 <span className="size-2 rounded-full bg-rose-300/70" />
                 <span className="size-2 rounded-full bg-amber-200/70" />
                 <span className="size-2 rounded-full bg-emerald-300/70" />
-                <span className="ml-3 h-5 flex-1 rounded-md border border-white/8 bg-slate-950/50" />
+                <span className="browser-address">everpeak-roofing.vercel.app</span>
               </div>
               <Image
                 src="/Image/everpeak-roofing-preview.png"
                 alt="EverPeak Roofing website homepage preview"
                 width={1901}
                 height={900}
-                sizes="(min-width: 1024px) 720px, (min-width: 640px) 640px, 100vw"
+                sizes="(min-width: 1280px) 620px, (min-width: 1024px) 52vw, calc(100vw - 48px)"
                 className="h-auto w-full"
               />
             </div>
 
             <div className="px-2 pb-2 sm:px-3 lg:px-0 lg:pb-0">
-              <p className="text-sm font-medium text-cyan-200">Roofing Website / Web Design &amp; Development</p>
+              <p className="project-index">01 / SELECTED PROJECT</p><p className="text-sm font-medium text-cyan-200">Roofing Website / Web Design &amp; Development</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">EverPeak Roofing</h3>
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-300 sm:text-base">
                 A premium roofing website built to establish trust, showcase services, and turn visitors into qualified leads.
               </p>
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="project-tags mt-5 flex flex-wrap gap-2">
                 {projectTags.map((tag) => (
                   <span key={tag} className="rounded-full border border-cyan-200/15 bg-cyan-300/[.06] px-3 py-1.5 text-xs font-medium text-slate-200">
                     {tag}
@@ -64,21 +64,17 @@ export default function Work() {
           </div>
         </article>
 
-        <article className="surface premium-card mt-6 overflow-hidden rounded-3xl p-3 sm:p-5 lg:p-6">
+        <article className="surface project-story mt-6 overflow-hidden rounded-3xl p-3 sm:p-5 lg:p-6">
           <div className="grid gap-7 lg:grid-cols-[.75fr_1.25fr] lg:items-center lg:gap-9">
             <div className="order-2 px-2 pb-2 sm:px-3 lg:order-1 lg:px-0 lg:pb-0">
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-semibold tracking-[0.2em] text-cyan-200">02</span>
-                <span className="h-px w-8 bg-cyan-200/30" aria-hidden="true" />
-                <span className="text-xs font-medium uppercase tracking-[0.16em] text-cyan-200">Live Demo</span>
-              </div>
-              <p className="mt-4 text-sm font-medium text-cyan-200">Website Design · SHK / Home Services</p>
+              <p className="project-index">02 / SELECTED PROJECT</p>
+<p className="mt-4 text-sm font-medium text-cyan-200">Website Design · SHK / Home Services</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">WärmeWerk SHK</h3>
               <p className="mt-4 max-w-md text-sm leading-7 text-slate-300 sm:text-base">
                 Premium website concept for a German SHK company specializing in sanitary, heating, heat pumps and climate technology.
               </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {['React', 'TypeScript', 'Vite'].map((tag) => (
+              <div className="project-tags mt-5 flex flex-wrap gap-2">
+                {[...projectTags, 'React', 'TypeScript', 'Vite'].map((tag) => (
                   <span key={tag} className="rounded-full border border-cyan-200/15 bg-cyan-300/[.06] px-3 py-1.5 text-xs font-medium text-slate-200">
                     {tag}
                   </span>
@@ -97,19 +93,19 @@ export default function Work() {
               </div>
             </div>
 
-            <div className="order-1 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 shadow-[0_20px_45px_rgba(0,0,0,.28)] lg:order-2">
+            <div className="project-preview order-1 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70 shadow-[0_20px_45px_rgba(0,0,0,.28)] lg:order-2">
               <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[.035] px-4 py-3" aria-hidden="true">
                 <span className="size-2 rounded-full bg-rose-300/70" />
                 <span className="size-2 rounded-full bg-amber-200/70" />
                 <span className="size-2 rounded-full bg-emerald-300/70" />
-                <span className="ml-3 h-5 flex-1 rounded-md border border-white/8 bg-slate-950/50" />
+                <span className="browser-address">waermewerk-shk.vercel.app</span>
               </div>
               <Image
                 src="/Image/waermewerk-shk-preview.png"
                 alt="WärmeWerk SHK website homepage preview"
                 width={1896}
                 height={905}
-                sizes="(min-width: 1024px) 720px, (min-width: 640px) 640px, 100vw"
+                sizes="(min-width: 1280px) 620px, (min-width: 1024px) 52vw, calc(100vw - 48px)"
                 className="h-auto w-full"
               />
             </div>

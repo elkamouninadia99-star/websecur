@@ -9,7 +9,8 @@ const contentSecurityPolicy = [
   "form-action 'self'",
   "frame-ancestors 'self'",
   "object-src 'none'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+  // React reconstructs development stack traces with eval; production never needs it.
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' blob: data: https://www.google-analytics.com https://www.googletagmanager.com",
   "font-src 'self' data: https://fonts.gstatic.com",

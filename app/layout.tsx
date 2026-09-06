@@ -11,7 +11,7 @@ const googleAnalyticsId = "G-R207GL2RWR";
 
 export const viewport: Viewport = {
   colorScheme: "dark",
-  themeColor: "#07111f",
+  themeColor: "#03101d",
 };
 
 export const metadata: Metadata = {
