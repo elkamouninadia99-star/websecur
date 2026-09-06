@@ -81,7 +81,7 @@ export default function Work() {
                 ))}
               </div>
               <a
-                href="https://waermewerk-shk.vercel.app"
+                href="https://waermewerk-shk-live.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-300 px-5 text-sm font-semibold text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:bg-cyan-200 hover:shadow-[0_12px_28px_rgba(34,211,238,.18)]"
@@ -101,7 +101,7 @@ export default function Work() {
                 <span className="browser-address">waermewerk-shk.vercel.app</span>
               </div>
               <Image
-                src="/Image/waermewerk-shk-preview.png"
+                src="/Image/waermewerk-shk-v2-preview.png"
                 alt="WärmeWerk SHK website homepage preview"
                 width={1896}
                 height={905}
